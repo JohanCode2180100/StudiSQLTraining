@@ -187,3 +187,13 @@ GRANT INSERT ON `complexes`.`seance` TO `Admin2@rex.fr`@`complexe`;
 GRANT SELECT, INSERT ON *.* TO `Admin4@rex.fr`@`complexe`;
 GRANT INSERT ON `complexes`.`film` TO `Admin2@rex.fr`@`complexe`;
 GRANT INSERT ON `complexes`.`seance` TO `Admin2@rex.fr`@`complexe`;
+
+--------------------------------------------------------------------------------------
+--------------------------------SAUVEGARDE ET RESTAURATION BDD------------------------
+--------------------------------------------------------------------------------------
+
+--sauvegarde BDD
+mysqldump -u root -p complexes > C:\Users\saint\Desktop\depotSQL\saveComplexes.sql
+
+--restauration bdd
+mysql -u root -p complexes < C:\Users\saint\Desktop\depotSQL\saveComplexes.sql
