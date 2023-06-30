@@ -154,13 +154,36 @@ VALUES
 
 INSERT INTO Administrateur(Email,Password,Droit,Cinema_id)
 VALUES
-('Admin1@rex.fr', '', 0, 1),
-('Admin2@rex.fr', '', 0, 1),
-('Admin3@rex.fr', '', 0, 1),
-('Admin4@rex.fr', '', 0, 1),
-('SuperAdmin@rex.fr','', 1)
+('Admin1@rex.fr', '$2y$10$RFc1ItI7n6o8lX/E5Qmty.4a/ipQdI6bBIaiscsmMV1UG/fLjxmpq', 0, 1),
+('Admin2@rex.fr', '$2y$10$/93PqCKC2xf.rDX7ziosTOVKsYct9YWLGYPOYd22ELFWFSDAlq/JG', 0, 1),
+('Admin3@rex.fr', '$2y$10$QzhUm5nLTiFNugGsdvxzG.is34d7iKppMkYecs.PvZemzSYAWfejq', 0, 1),
+('Admin4@rex.fr', '$2y$10$nTUkMLTrm1cTxnbsKgAHv.3Namd83mDurjxfHebnd.Xws9S9zApS2', 0, 1),
+('SuperAdmin@rex.fr','$2y$10$O2LplFvmY5iyFqJ8wQUxDero5tFqilzNHuLUIq7PtG3NGR08fXDju', 1)
 
 
 --------------------------------------------------------------------------------------
------------------------MISE EN PLACE DE DONNEES FACTICES------------------------------
+--------------------------------ADMINISTRATION BDD------------------------------------
 --------------------------------------------------------------------------------------
+
+-- Administrateur Tous les droits
+
+GRANT ALL PRIVILEGES ON *.* TO 'SuperAdmin@rex.fr'@'complexes' IDENTIFIED BY '$2y$10$O2LplFvmY5iyFqJ8wQUxDero5tFqilzNHuLUIq7PtG3NGR08fXDju';
+
+--Administrateur cinema avec possibilités d'ajout de données et vues des données 
+
+GRANT SELECT, INSERT ON *.* TO `Admin1@rex.fr`@`complexe`;
+GRANT INSERT ON `complexes`.`film` TO `Admin1@rex.fr`@`complexe`;
+GRANT INSERT ON `complexes`.`seance` TO `Admin1@rex.fr`@`complexe`;
+
+
+GRANT SELECT, INSERT ON *.* TO `Admin2@rex.fr`@`complexe`;
+GRANT INSERT ON `complexes`.`film` TO `Admin2@rex.fr`@`complexe`;
+GRANT INSERT ON `complexes`.`seance` TO `Admin2@rex.fr`@`complexe`;
+
+GRANT SELECT, INSERT ON *.* TO `Admin3@rex.fr`@`complexe`;
+GRANT INSERT ON `complexes`.`film` TO `Admin2@rex.fr`@`complexe`;
+GRANT INSERT ON `complexes`.`seance` TO `Admin2@rex.fr`@`complexe`;
+
+GRANT SELECT, INSERT ON *.* TO `Admin4@rex.fr`@`complexe`;
+GRANT INSERT ON `complexes`.`film` TO `Admin2@rex.fr`@`complexe`;
+GRANT INSERT ON `complexes`.`seance` TO `Admin2@rex.fr`@`complexe`;
